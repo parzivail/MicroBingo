@@ -42,7 +42,7 @@ namespace Bingo
 
         private void FormBingoBoard_Load(object sender, EventArgs e)
         {
-            BackColor = Color.FromArgb(10, 10, 10);
+            BackColor = Color.FromArgb(12, 12, 12);
         }
 
         public Image UpdateBoard()
