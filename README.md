@@ -1,7 +1,7 @@
 # SjccBingo
 Bingo program for SJCC
 
-#Tutorial
+# Tutorial
 On the main screen, you'll see 3 buttons, accompanied by a number indicator, and a smaller view of the board.
 
 ## `Pick Number` button
