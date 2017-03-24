@@ -45,7 +45,7 @@ namespace Bingo
             BackColor = Color.FromArgb(10, 10, 10);
         }
 
-        public void UpdateBoard()
+        public Image UpdateBoard()
         {
             var boardOffOrig = (Image) Images.bingo_off.Clone();
             var boardOff = Graphics.FromImage(boardOffOrig);
@@ -59,6 +59,8 @@ namespace Bingo
             }
 
             pictureBox1.Image = boardOffOrig;
+
+            return boardOffOrig;
         }
 
         public void ResetBoard()

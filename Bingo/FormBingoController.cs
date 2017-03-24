@@ -36,6 +36,8 @@ namespace Bingo
 
             _board = new FormBingoBoard(this);
             _board.Show();
+
+            pbMinimap.Image = _board.UpdateBoard();
         }
 
         private void Form1_Closing(object sender, CancelEventArgs e)
@@ -62,7 +64,7 @@ namespace Bingo
             else
                 lNumber.Text = BingoBoard.LetterForNumber(num) + @"-" + num;
 
-            _board.UpdateBoard();
+            pbMinimap.Image = _board.UpdateBoard();
         }
 
         private void bNewGame_Click(object sender, EventArgs e)
@@ -74,29 +76,20 @@ namespace Bingo
 
             BingoBoard.ResetBoard();
 
+            pbMinimap.Image = _board.UpdateBoard();
+
             _board.ResetBoard();
             lNumber.Text = Resources.Ready;
         }
 
-        private void bReopenBoard_Click(object sender, EventArgs e)
-        {
-            IsClosing = true;
-            _board?.Close();
-            IsClosing = false;
-
-            _board = new FormBingoBoard(this);
-            _board.Show();
-            _board.UpdateBoard();
-        }
-
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("");
+            Process.Start("https://github.com/parzivail/");
         }
 
         private void tutorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("");
+            Process.Start("https://github.com/parzivail/SjccBingo/blob/master/README.md#tutorial");
         }
     }
 }
