@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +19,8 @@ namespace Bingo
 
         public bool IsClosing { get; set; }
         public BingoBoard BingoBoard { get; set; }
+
+        private const int Version = 1;
 
         public FormBingoController()
         {
@@ -38,6 +41,42 @@ namespace Bingo
             _board.Show();
 
             UpdateBoard();
+
+            try
+            {
+                var client = new WebClient();
+                var remoteVersionString =
+                    client.DownloadString("https://raw.githubusercontent.com/parzivail/SjccBingo/master/VERSION.md");
+
+                if (!int.TryParse(remoteVersionString, out int version)) return;
+                if (version == Version)
+                    return;
+
+                if (MessageBox.Show(this,
+                        string.Format(Resources.NewUpdateAvailable, Version, version),
+                        Resources.Bingo, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    TryWebpage("https://github.com/parzivail/SjccBingo/releases/tag/1." + version);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(this,
+                    Resources.NoInternet,
+                    Resources.Bingo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void TryWebpage(string url)
+        {
+            try
+            {
+                Process.Start(url);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(this,
+                    Resources.NoInternet,
+                    Resources.Bingo, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void Form1_Closing(object sender, CancelEventArgs e)
@@ -90,12 +129,12 @@ namespace Bingo
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/parzivail/");
+            TryWebpage("https://github.com/parzivail/");
         }
 
         private void tutorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/parzivail/SjccBingo/blob/master/README.md#tutorial");
+            TryWebpage("https://github.com/parzivail/SjccBingo/blob/master/README.md#tutorial");
         }
     }
 }
