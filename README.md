@@ -5,7 +5,7 @@ Bingo program for SJCC
 On the main screen, you'll see 3 buttons, accompanied by a number indicator, and a smaller view of the board.
 
 ## `Pick Number` button
-Press this button to generate a new number, and display it on the board
+Press this button to generate a new number, and display it on the board. This button replaces picking up a ball from the machine.
 
 ## `Reset Board` button
 Press this button to clear all of the currently-lit numbers off the board. In effect, turns off all the lights on the board and clears all already-called numbers.
