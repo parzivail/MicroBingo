@@ -106,6 +106,15 @@ namespace Bingo.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Numbers Selected: {0}/75.
+        /// </summary>
+        internal static string NumbersSelected {
+            get {
+                return ResourceManager.GetString("NumbersSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ready.
         /// </summary>
         internal static string Ready {

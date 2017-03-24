@@ -37,7 +37,7 @@ namespace Bingo
             _board = new FormBingoBoard(this);
             _board.Show();
 
-            pbMinimap.Image = _board.UpdateBoard();
+            UpdateBoard();
         }
 
         private void Form1_Closing(object sender, CancelEventArgs e)
@@ -64,7 +64,7 @@ namespace Bingo
             else
                 lNumber.Text = BingoBoard.LetterForNumber(num) + @"-" + num;
 
-            pbMinimap.Image = _board.UpdateBoard();
+            UpdateBoard();
         }
 
         private void bNewGame_Click(object sender, EventArgs e)
@@ -76,10 +76,16 @@ namespace Bingo
 
             BingoBoard.ResetBoard();
 
-            pbMinimap.Image = _board.UpdateBoard();
+            UpdateBoard();
 
             _board.ResetBoard();
             lNumber.Text = Resources.Ready;
+        }
+
+        private void UpdateBoard()
+        {
+            pbMinimap.Image = _board.UpdateBoard();
+            tsLNumSelected.Text = string.Format(Resources.NumbersSelected, BingoBoard.Numbers.Count);
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)

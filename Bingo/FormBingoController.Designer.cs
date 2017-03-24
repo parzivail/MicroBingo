@@ -30,14 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBingoController));
             this.gbGame = new System.Windows.Forms.GroupBox();
-            this.lNumber = new Bingo.SmoothLabel();
             this.bPickNumber = new System.Windows.Forms.Button();
             this.bNewGame = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsDdbHelp = new System.Windows.Forms.ToolStripDropDownButton();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pbMinimap = new System.Windows.Forms.PictureBox();
+            this.tsLNumSelected = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lNumber = new Bingo.SmoothLabel();
             this.gbGame.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimap)).BeginInit();
@@ -55,18 +56,6 @@
             this.gbGame.TabIndex = 0;
             this.gbGame.TabStop = false;
             this.gbGame.Text = "Game";
-            // 
-            // lNumber
-            // 
-            this.lNumber.AutoSize = true;
-            this.lNumber.Font = new System.Drawing.Font("Consolas", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lNumber.Location = new System.Drawing.Point(162, 15);
-            this.lNumber.Name = "lNumber";
-            this.lNumber.Size = new System.Drawing.Size(100, 112);
-            this.lNumber.TabIndex = 1;
-            this.lNumber.Text = "0";
-            this.lNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.lNumber.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
             // bPickNumber
             // 
@@ -94,11 +83,13 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsDdbHelp});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 395);
+            this.tsDdbHelp,
+            this.tsLNumSelected});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 394);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(504, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(504, 23);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -111,22 +102,22 @@
             this.tsDdbHelp.Image = ((System.Drawing.Image)(resources.GetObject("tsDdbHelp.Image")));
             this.tsDdbHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsDdbHelp.Name = "tsDdbHelp";
-            this.tsDdbHelp.Size = new System.Drawing.Size(45, 20);
+            this.tsDdbHelp.Size = new System.Drawing.Size(50, 21);
             this.tsDdbHelp.Text = "Help";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // tutorialToolStripMenuItem
             // 
             this.tutorialToolStripMenuItem.Name = "tutorialToolStripMenuItem";
-            this.tutorialToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tutorialToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.tutorialToolStripMenuItem.Text = "Tutorial";
             this.tutorialToolStripMenuItem.Click += new System.EventHandler(this.tutorialToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // pbMinimap
             // 
@@ -139,6 +130,24 @@
             this.pbMinimap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbMinimap.TabIndex = 3;
             this.pbMinimap.TabStop = false;
+            // 
+            // tsLNumSelected
+            // 
+            this.tsLNumSelected.Name = "tsLNumSelected";
+            this.tsLNumSelected.Size = new System.Drawing.Size(165, 18);
+            this.tsLNumSelected.Text = "Numbers Selected: 0/75";
+            // 
+            // lNumber
+            // 
+            this.lNumber.AutoSize = true;
+            this.lNumber.Font = new System.Drawing.Font("Consolas", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lNumber.Location = new System.Drawing.Point(162, 15);
+            this.lNumber.Name = "lNumber";
+            this.lNumber.Size = new System.Drawing.Size(100, 112);
+            this.lNumber.TabIndex = 1;
+            this.lNumber.Text = "0";
+            this.lNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lNumber.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
             // FormBingoController
             // 
@@ -173,5 +182,6 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tutorialToolStripMenuItem;
         private System.Windows.Forms.PictureBox pbMinimap;
+        private System.Windows.Forms.ToolStripStatusLabel tsLNumSelected;
     }
 }

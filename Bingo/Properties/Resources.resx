@@ -132,4 +132,7 @@
   <data name="CloseConfirmation" xml:space="preserve">
     <value>Are you sure you want to close?</value>
   </data>
+  <data name="NumbersSelected" xml:space="preserve">
+    <value>Numbers Selected: {0}/75</value>
+  </data>
 </root>
