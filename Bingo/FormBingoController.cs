@@ -20,7 +20,7 @@ namespace Bingo
         public bool IsClosing { get; set; }
         public BingoBoard BingoBoard { get; set; }
 
-        private const int Version = 0;
+        private const int Version = 1;
 
         public FormBingoController()
         {
@@ -41,28 +41,6 @@ namespace Bingo
             _board.Show();
 
             UpdateBoard();
-
-            try
-            {
-                var client = new WebClient();
-                var remoteVersionString =
-                    client.DownloadString("https://raw.githubusercontent.com/parzivail/SjccBingo/master/VERSION.md");
-
-                if (!int.TryParse(remoteVersionString, out int version)) return;
-                if (version == Version)
-                    return;
-
-                if (MessageBox.Show(this,
-                        string.Format(Resources.NewUpdateAvailable, Version, version),
-                        Resources.Bingo, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                    TryWebpage("https://github.com/parzivail/SjccBingo/releases/tag/1." + version);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show(this,
-                    Resources.NoInternet,
-                    Resources.Bingo, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
         private void TryWebpage(string url)
