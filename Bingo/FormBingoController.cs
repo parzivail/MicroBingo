@@ -20,7 +20,7 @@ namespace Bingo
         public bool IsClosing { get; set; }
         public BingoBoard BingoBoard { get; set; }
 
-        private const int Version = 1;
+        private const int Version = 0;
 
         public FormBingoController()
         {
