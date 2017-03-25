@@ -15,12 +15,10 @@ namespace Bingo
 {
     public partial class FormBingoController : Form
     {
-        private FormBingoBoard _board;
+        private FormBingoDisplay _display;
 
         public bool IsClosing { get; set; }
         public BingoBoard BingoBoard { get; set; }
-
-        private const int Version = 1;
 
         public FormBingoController()
         {
@@ -37,8 +35,8 @@ namespace Bingo
 
             BingoBoard = new BingoBoard();
 
-            _board = new FormBingoBoard(this);
-            _board.Show();
+            _display = new FormBingoDisplay(this);
+            _display.Show();
 
             UpdateBoard();
         }
@@ -52,14 +50,14 @@ namespace Bingo
             catch (Exception)
             {
                 MessageBox.Show(this,
-                    Resources.NoInternet,
+                    Resources.CantOpenLink,
                     Resources.Bingo, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void Form1_Closing(object sender, CancelEventArgs e)
         {
-            if (_board.IsClosing)
+            if (_display.IsClosing)
                 return;
 
             if (MessageBox.Show(this, Resources.CloseConfirmation, Resources.Bingo, MessageBoxButtons.YesNo,
@@ -68,7 +66,7 @@ namespace Bingo
             else
             {
                 IsClosing = true;
-                _board.Close();
+                _display.Close();
             }
         }
 
@@ -95,13 +93,13 @@ namespace Bingo
 
             UpdateBoard();
 
-            _board.ResetBoard();
+            _display.ResetBoard();
             lNumber.Text = Resources.Ready;
         }
 
         private void UpdateBoard()
         {
-            pbMinimap.Image = _board.UpdateBoard();
+            pbMinimap.Image = _display.UpdateBoard();
             tsLNumSelected.Text = string.Format(Resources.NumbersSelected, BingoBoard.Numbers.Count);
         }
 

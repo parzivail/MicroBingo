@@ -50,11 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BingoBoard.cs" />
-    <Compile Include="FormBingoBoard.cs">
+    <Compile Include="FormBingoDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormBingoBoard.Designer.cs">
-      <DependentUpon>FormBingoBoard.cs</DependentUpon>
+    <Compile Include="FormBingoDisplay.Designer.cs">
+      <DependentUpon>FormBingoDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="FormBingoController.cs">
       <SubType>Form</SubType>
@@ -72,8 +72,8 @@
     <Compile Include="SmoothLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="FormBingoBoard.resx">
-      <DependentUpon>FormBingoBoard.cs</DependentUpon>
+    <EmbeddedResource Include="FormBingoDisplay.resx">
+      <DependentUpon>FormBingoDisplay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormBingoController.resx">
       <DependentUpon>FormBingoController.cs</DependentUpon>

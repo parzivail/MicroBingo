@@ -11,13 +11,13 @@ using Bingo.Properties;
 
 namespace Bingo
 {
-    public partial class FormBingoBoard : Form
+    public partial class FormBingoDisplay : Form
     {
         private readonly FormBingoController _parent;
 
         public bool IsClosing { get; set; }
 
-        public FormBingoBoard(FormBingoController parent)
+        public FormBingoDisplay(FormBingoController parent)
         {
             _parent = parent;
             InitializeComponent();

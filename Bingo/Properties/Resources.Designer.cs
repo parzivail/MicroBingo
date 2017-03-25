@@ -88,6 +88,15 @@ namespace Bingo.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to open link in browser..
+        /// </summary>
+        internal static string CantOpenLink {
+            get {
+                return ResourceManager.GetString("CantOpenLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to close?.
         /// </summary>
         internal static string CloseConfirmation {
@@ -111,15 +120,6 @@ namespace Bingo.Properties {
         internal static string NewUpdateAvailable {
             get {
                 return ResourceManager.GetString("NewUpdateAvailable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Could not connect to the internet. Please check your connection if you wish to have update checking and tutorials available..
-        /// </summary>
-        internal static string NoInternet {
-            get {
-                return ResourceManager.GetString("NoInternet", resourceCulture);
             }
         }
         

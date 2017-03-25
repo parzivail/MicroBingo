@@ -135,8 +135,8 @@
   <data name="NumbersSelected" xml:space="preserve">
     <value>Numbers Selected: {0}/75</value>
   </data>
-  <data name="NoInternet" xml:space="preserve">
-    <value>Could not connect to the internet. Please check your connection if you wish to have update checking and tutorials available.</value>
+  <data name="CantOpenLink" xml:space="preserve">
+    <value>Unable to open link in browser.</value>
   </data>
   <data name="NewUpdateAvailable" xml:space="preserve">
     <value>A new update is available online! This version: {0}, New version: {1}. Do you want to download it now?</value>
