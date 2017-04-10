@@ -61,16 +61,17 @@ namespace Bingo
             {
                 boardOff.TextRenderingHint = TextRenderingHint.AntiAlias;
 
-                var num = _parent.BingoBoard.CurrentNumber;
-                boardOff.DrawString(BingoBoard.LetterForNumber(num) + @"-" + num, Arial, Brushes.White, 15, 642);
-
                 var left = _parent.BingoBoard.NumbersShowing.Count + "/" +
                            _parent.BingoBoard.GameType.GetLegalCategories().Count * 15;
-                boardOff.DrawString(left, Arial, Brushes.White,
-                    boardOffOrig.Width / 2f - boardOff.MeasureString(left, Arial).Width / 2f, 642);
+                boardOff.DrawString(left, ArialSmall, Brushes.White, 30, 678);
+
+                var num = _parent.BingoBoard.CurrentNumber;
+                var curNumStr = BingoBoard.LetterForNumber(num) + @"-" + num;
+                boardOff.DrawString(curNumStr, Arial, Brushes.White,
+                    boardOffOrig.Width / 2f - boardOff.MeasureString(curNumStr, Arial).Width / 2f, 642);
 
                 var name = _parent.BingoBoard.GameType.GetName();
-                boardOff.DrawString(name, ArialSmall, Brushes.White, boardOffOrig.Width - 15 - boardOff.MeasureString(name, ArialSmall).Width, 678);
+                boardOff.DrawString(name, ArialSmall, Brushes.White, boardOffOrig.Width - 30 - boardOff.MeasureString(name, ArialSmall).Width, 678);
             }
 
             pictureBox1.Image = boardOffOrig;
