@@ -30,15 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBingoController));
             this.gbGame = new System.Windows.Forms.GroupBox();
+            this.lNumber = new Bingo.SmoothLabel();
             this.bPickNumber = new System.Windows.Forms.Button();
             this.bNewGame = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsDdbHelp = new System.Windows.Forms.ToolStripDropDownButton();
             this.tutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pbMinimap = new System.Windows.Forms.PictureBox();
             this.tsLNumSelected = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lNumber = new Bingo.SmoothLabel();
+            this.pbMinimap = new System.Windows.Forms.PictureBox();
+            this.cbGameSelector = new System.Windows.Forms.ComboBox();
             this.gbGame.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimap)).BeginInit();
@@ -48,6 +49,7 @@
             // 
             this.gbGame.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbGame.Controls.Add(this.cbGameSelector);
             this.gbGame.Controls.Add(this.lNumber);
             this.gbGame.Controls.Add(this.bPickNumber);
             this.gbGame.Location = new System.Drawing.Point(12, 12);
@@ -57,12 +59,24 @@
             this.gbGame.TabStop = false;
             this.gbGame.Text = "Game";
             // 
+            // lNumber
+            // 
+            this.lNumber.AutoSize = true;
+            this.lNumber.Font = new System.Drawing.Font("Consolas", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lNumber.Location = new System.Drawing.Point(162, 15);
+            this.lNumber.Name = "lNumber";
+            this.lNumber.Size = new System.Drawing.Size(100, 112);
+            this.lNumber.TabIndex = 1;
+            this.lNumber.Text = "0";
+            this.lNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lNumber.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            // 
             // bPickNumber
             // 
             this.bPickNumber.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bPickNumber.Location = new System.Drawing.Point(6, 19);
             this.bPickNumber.Name = "bPickNumber";
-            this.bPickNumber.Size = new System.Drawing.Size(150, 108);
+            this.bPickNumber.Size = new System.Drawing.Size(150, 81);
             this.bPickNumber.TabIndex = 0;
             this.bPickNumber.Text = "Pick Number";
             this.bPickNumber.UseVisualStyleBackColor = true;
@@ -119,6 +133,12 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // tsLNumSelected
+            // 
+            this.tsLNumSelected.Name = "tsLNumSelected";
+            this.tsLNumSelected.Size = new System.Drawing.Size(165, 18);
+            this.tsLNumSelected.Text = "Numbers Selected: 0/75";
+            // 
             // pbMinimap
             // 
             this.pbMinimap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -131,23 +151,14 @@
             this.pbMinimap.TabIndex = 3;
             this.pbMinimap.TabStop = false;
             // 
-            // tsLNumSelected
+            // cbGameSelector
             // 
-            this.tsLNumSelected.Name = "tsLNumSelected";
-            this.tsLNumSelected.Size = new System.Drawing.Size(165, 18);
-            this.tsLNumSelected.Text = "Numbers Selected: 0/75";
-            // 
-            // lNumber
-            // 
-            this.lNumber.AutoSize = true;
-            this.lNumber.Font = new System.Drawing.Font("Consolas", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lNumber.Location = new System.Drawing.Point(162, 15);
-            this.lNumber.Name = "lNumber";
-            this.lNumber.Size = new System.Drawing.Size(100, 112);
-            this.lNumber.TabIndex = 1;
-            this.lNumber.Text = "0";
-            this.lNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.lNumber.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            this.cbGameSelector.FormattingEnabled = true;
+            this.cbGameSelector.Location = new System.Drawing.Point(6, 106);
+            this.cbGameSelector.Name = "cbGameSelector";
+            this.cbGameSelector.Size = new System.Drawing.Size(150, 21);
+            this.cbGameSelector.TabIndex = 2;
+            this.cbGameSelector.SelectedIndexChanged += new System.EventHandler(this.cbGameSelector_SelectedIndexChanged);
             // 
             // FormBingoController
             // 
@@ -183,5 +194,6 @@
         private System.Windows.Forms.ToolStripMenuItem tutorialToolStripMenuItem;
         private System.Windows.Forms.PictureBox pbMinimap;
         private System.Windows.Forms.ToolStripStatusLabel tsLNumSelected;
+        private System.Windows.Forms.ComboBox cbGameSelector;
     }
 }

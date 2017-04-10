@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Bingo
 {
-    interface IBingoGameType
+    public interface IBingoGameType
     {
-        bool IsCategoryLegal(int category);
+        List<int> GetLegalCategories();
 
         string GetName();
     }

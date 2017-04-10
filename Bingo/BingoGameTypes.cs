@@ -7,19 +7,36 @@ namespace Bingo
 {
     class BingoGameTypes
     {
+        public static IBingoGameType GameStandard = new GameTypeStandard("Standard");
         public static IBingoGameType GameFourCorners = new GameTypeFourCorners();
         public static IBingoGameType GameLittlePictureFrame = new GameTypeLittlePictureFrame();
+        public static IBingoGameType GameX = new GameTypeX();
+        public static IBingoGameType GamePostageStamp = new GameTypePostageStamp();
+        public static IBingoGameType GameBlackout = new GameTypeStandard("Blackout");
 
-        internal class GameTypeFourCorners : IBingoGameType
+        internal class GameTypePostageStamp : IBingoGameType
         {
             public string GetName()
             {
-                return "Four Corners";
+                return "Postage Stamp";
             }
 
-            public bool IsCategoryLegal(int category)
+            public List<int> GetLegalCategories()
             {
-                return category == 0 || category == 4;
+                return new List<int> {3, 4};
+            }
+        }
+
+        internal class GameTypeX : IBingoGameType
+        {
+            public string GetName()
+            {
+                return "X";
+            }
+
+            public List<int> GetLegalCategories()
+            {
+                return new List<int> { 0, 1, 3, 4 };
             }
         }
 
@@ -30,9 +47,42 @@ namespace Bingo
                 return "Little Picture Frame";
             }
 
-            public bool IsCategoryLegal(int category)
+            public List<int> GetLegalCategories()
             {
-                return category == 1 || category == 2 || category == 3;
+                return new List<int> { 1, 2, 3 };
+            }
+        }
+
+        internal class GameTypeFourCorners : IBingoGameType
+        {
+            public string GetName()
+            {
+                return "Four Corners";
+            }
+
+            public List<int> GetLegalCategories()
+            {
+                return new List<int> { 0, 4 };
+            }
+        }
+
+        internal class GameTypeStandard : IBingoGameType
+        {
+            private readonly string _name;
+
+            public GameTypeStandard(string name)
+            {
+                _name = name;
+            }
+
+            public string GetName()
+            {
+                return _name;
+            }
+
+            public List<int> GetLegalCategories()
+            {
+                return new List<int> { 0, 1, 2, 3, 4};
             }
         }
     }

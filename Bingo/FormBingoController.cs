@@ -13,6 +13,15 @@ namespace Bingo
         public bool IsClosing { get; set; }
         public BingoBoard BingoBoard { get; set; }
 
+        public static IBingoGameType[] GameTypes =
+        {
+            BingoGameTypes.GameStandard, BingoGameTypes.GameLittlePictureFrame,
+            BingoGameTypes.GameX, BingoGameTypes.GameFourCorners, BingoGameTypes.GameBlackout,
+            BingoGameTypes.GamePostageStamp
+        };
+
+        public static string[] GameTypeNames = new string[GameTypes.Length];
+
         public FormBingoController()
         {
             InitializeComponent();
@@ -31,7 +40,14 @@ namespace Bingo
             _display = new FormBingoDisplay(this);
             _display.Show();
 
-            UpdateBoard();
+            BingoBoard.GameType = GameTypes[0];
+
+            for (var i = 0; i < GameTypes.Length; i++)
+            {
+                GameTypeNames[i] = GameTypes[i].GetName();
+                cbGameSelector.Items.Add(GameTypeNames[i]);
+            }
+            cbGameSelector.SelectedIndex = 0;
         }
 
         private void TryWebpage(string url)
@@ -77,10 +93,14 @@ namespace Bingo
 
         private void bNewGame_Click(object sender, EventArgs e)
         {
-            if (
-                MessageBox.Show(this, Resources.BoardClearConfirmation, Resources.Bingo, MessageBoxButtons.YesNo,
+            TryReset();
+        }
+
+        private bool TryReset()
+        {
+            if (BingoBoard.Numbers.Count > 0 && MessageBox.Show(this, Resources.BoardClearConfirmation, Resources.Bingo, MessageBoxButtons.YesNo,
                     MessageBoxIcon.Exclamation) == DialogResult.No)
-                return;
+                return false;
 
             BingoBoard.ResetBoard();
 
@@ -88,12 +108,14 @@ namespace Bingo
 
             _display.ResetBoard();
             lNumber.Text = Resources.Ready;
+
+            return true;
         }
 
         private void UpdateBoard()
         {
             pbMinimap.Image = _display.UpdateBoard();
-            tsLNumSelected.Text = string.Format(Resources.NumbersSelected, BingoBoard.Numbers.Count);
+            tsLNumSelected.Text = string.Format(Resources.NumbersSelected, BingoBoard.NumbersShowing.Count, BingoBoard.GameType.GetLegalCategories().Count * 15);
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -104,6 +126,16 @@ namespace Bingo
         private void tutorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TryWebpage("https://github.com/parzivail/SjccBingo/blob/master/README.md#tutorial");
+        }
+
+        private void cbGameSelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!TryReset())
+                return;
+
+            BingoBoard.GameType = GameTypes[cbGameSelector.SelectedIndex];
+
+            UpdateBoard();
         }
     }
 }

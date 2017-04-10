@@ -133,7 +133,7 @@
     <value>Are you sure you want to close?</value>
   </data>
   <data name="NumbersSelected" xml:space="preserve">
-    <value>Numbers Selected: {0}/75</value>
+    <value>Numbers Selected: {0}/{1}</value>
   </data>
   <data name="CantOpenLink" xml:space="preserve">
     <value>Unable to open link in browser.</value>

@@ -124,7 +124,7 @@ namespace Bingo.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Numbers Selected: {0}/75.
+        ///   Looks up a localized string similar to Numbers Selected: {0}/{1}.
         /// </summary>
         internal static string NumbersSelected {
             get {

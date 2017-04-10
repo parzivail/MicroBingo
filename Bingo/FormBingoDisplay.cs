@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
 using Bingo.Properties;
 
@@ -11,6 +12,7 @@ namespace Bingo
         private readonly FormBingoController _parent;
 
         private static readonly Font Arial = new Font(new FontFamily("Arial"), 100, FontStyle.Bold);
+        private static readonly Font ArialSmall = new Font(new FontFamily("Arial"), 48, FontStyle.Bold);
 
         public bool IsClosing { get; set; }
 
@@ -48,20 +50,27 @@ namespace Bingo
             var boardOff = Graphics.FromImage(boardOffOrig);
             var boardOn = (Image)Images.bingo_on.Clone();
 
-            foreach (var number in _parent.BingoBoard.Numbers)
+            foreach (var number in _parent.BingoBoard.NumbersShowing)
             {
                 var pos = _parent.BingoBoard.GetPositionForNumber(number);
 
                 boardOff.DrawImage(boardOn, new Rectangle(pos.X, pos.Y, BingoBoard.BoardNumberWidth - 10, BingoBoard.BoardNumberHeight), new Rectangle(pos.X, pos.Y, BingoBoard.BoardNumberWidth - 10, BingoBoard.BoardNumberHeight), GraphicsUnit.Pixel);
             }
 
-            if (_parent.BingoBoard.Numbers.Count > 0)
+            if (_parent.BingoBoard.NumbersShowing.Count > 0)
             {
-                //878, 642
+                boardOff.TextRenderingHint = TextRenderingHint.AntiAlias;
+
                 var num = _parent.BingoBoard.CurrentNumber;
                 boardOff.DrawString(BingoBoard.LetterForNumber(num) + @"-" + num, Arial, Brushes.White, 15, 642);
-                
-                boardOff.DrawString(_parent.BingoBoard.Numbers.Count + "/75", Arial, Brushes.White, 848, 642);
+
+                var left = _parent.BingoBoard.NumbersShowing.Count + "/" +
+                           _parent.BingoBoard.GameType.GetLegalCategories().Count * 15;
+                boardOff.DrawString(left, Arial, Brushes.White,
+                    boardOffOrig.Width / 2f - boardOff.MeasureString(left, Arial).Width / 2f, 642);
+
+                var name = _parent.BingoBoard.GameType.GetName();
+                boardOff.DrawString(name, ArialSmall, Brushes.White, boardOffOrig.Width - 15 - boardOff.MeasureString(name, ArialSmall).Width, 678);
             }
 
             pictureBox1.Image = boardOffOrig;

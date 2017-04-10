@@ -15,8 +15,10 @@ namespace Bingo
         public const int BoardNumberHeight = 110;
         
         public List<int> Numbers { get; } = new List<int>();
+        public List<int> NumbersShowing { get; } = new List<int>();
         public Random Rng { get; } = new Random();
         public int CurrentNumber { get; set; } = -1;
+        public IBingoGameType GameType;
 
         public static string LetterForNumber(int num)
         {
@@ -48,16 +50,25 @@ namespace Bingo
 
         public int PickNumber()
         {
-            if (Numbers.Count == 75)
+            var cats = GameType.GetLegalCategories();
+
+            if (NumbersShowing.Count == cats.Count * 15)
                 return 0;
 
             int num;
-            do
+            while (true)
             {
                 num = Rng.Next(75) + 1;
-            } while (Numbers.Contains(num));
 
-            Numbers.Add(num);
+                if (Numbers.Contains(num))
+                    continue;
+                Numbers.Add(num);
+
+                if (!cats.Contains(GetRowForNumber(num))) continue;
+
+                NumbersShowing.Add(num);
+                break;
+            }
 
             CurrentNumber = num;
 
@@ -67,6 +78,7 @@ namespace Bingo
         public void ResetBoard()
         {
             Numbers.Clear();
+            NumbersShowing.Clear();
             CurrentNumber = -1;
         }
     }
