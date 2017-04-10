@@ -9,20 +9,21 @@ namespace Bingo
 {
     public class BingoBoard
     {
-        private readonly string[] _bingo = { "B", "I", "N", "G", "O" };
+        private static readonly string[] _bingo = { "B", "I", "N", "G", "O" };
 
         public const int BoardNumberWidth = 120;
         public const int BoardNumberHeight = 110;
         
         public List<int> Numbers { get; } = new List<int>();
         public Random Rng { get; } = new Random();
+        public int CurrentNumber { get; set; } = -1;
 
-        public string LetterForNumber(int num)
+        public static string LetterForNumber(int num)
         {
             return _bingo[GetRowForNumber(num)];
         }
 
-        public int GetRowForNumber(int num)
+        public static int GetRowForNumber(int num)
         {
             return (int)Math.Floor((num - 1) / 15f);
         }
@@ -58,12 +59,15 @@ namespace Bingo
 
             Numbers.Add(num);
 
+            CurrentNumber = num;
+
             return num;
         }
 
         public void ResetBoard()
         {
             Numbers.Clear();
+            CurrentNumber = -1;
         }
     }
 }

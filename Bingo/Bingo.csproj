@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BingoBoard.cs" />
+    <Compile Include="BingoGameType.cs" />
+    <Compile Include="BingoGameTypes.cs" />
     <Compile Include="FormBingoDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
