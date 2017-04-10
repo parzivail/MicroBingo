@@ -106,9 +106,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bingo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\bingo_off.png" />
   </ItemGroup>
   <ItemGroup>
