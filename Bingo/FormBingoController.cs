@@ -13,6 +13,8 @@ namespace Bingo
         public bool IsClosing { get; set; }
         public BingoBoard BingoBoard { get; set; }
 
+        public const double Verison = 1.1;
+
         public static IBingoGameType[] GameTypes =
         {
             BingoGameTypes.GameStandard, BingoGameTypes.GameLittlePictureFrame,
@@ -32,7 +34,7 @@ namespace Bingo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Text = Resources.BingoController;
+            Text = Resources.BingoController + " v" + Verison;
             lNumber.Text = Resources.Ready;
 
             BingoBoard = new BingoBoard();
