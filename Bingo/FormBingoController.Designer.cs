@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBingoController));
             this.gbGame = new System.Windows.Forms.GroupBox();
-            this.lNumber = new Bingo.SmoothLabel();
+            this.cbGameSelector = new System.Windows.Forms.ComboBox();
             this.bPickNumber = new System.Windows.Forms.Button();
             this.bNewGame = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -39,7 +39,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsLNumSelected = new System.Windows.Forms.ToolStripStatusLabel();
             this.pbMinimap = new System.Windows.Forms.PictureBox();
-            this.cbGameSelector = new System.Windows.Forms.ComboBox();
+            this.lNumber = new Bingo.SmoothLabel();
             this.gbGame.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimap)).BeginInit();
@@ -59,17 +59,14 @@
             this.gbGame.TabStop = false;
             this.gbGame.Text = "Game";
             // 
-            // lNumber
+            // cbGameSelector
             // 
-            this.lNumber.AutoSize = true;
-            this.lNumber.Font = new System.Drawing.Font("Consolas", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lNumber.Location = new System.Drawing.Point(162, 15);
-            this.lNumber.Name = "lNumber";
-            this.lNumber.Size = new System.Drawing.Size(100, 112);
-            this.lNumber.TabIndex = 1;
-            this.lNumber.Text = "0";
-            this.lNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.lNumber.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            this.cbGameSelector.FormattingEnabled = true;
+            this.cbGameSelector.Location = new System.Drawing.Point(6, 106);
+            this.cbGameSelector.Name = "cbGameSelector";
+            this.cbGameSelector.Size = new System.Drawing.Size(150, 21);
+            this.cbGameSelector.TabIndex = 2;
+            this.cbGameSelector.SelectedIndexChanged += new System.EventHandler(this.cbGameSelector_SelectedIndexChanged);
             // 
             // bPickNumber
             // 
@@ -151,14 +148,17 @@
             this.pbMinimap.TabIndex = 3;
             this.pbMinimap.TabStop = false;
             // 
-            // cbGameSelector
+            // lNumber
             // 
-            this.cbGameSelector.FormattingEnabled = true;
-            this.cbGameSelector.Location = new System.Drawing.Point(6, 106);
-            this.cbGameSelector.Name = "cbGameSelector";
-            this.cbGameSelector.Size = new System.Drawing.Size(150, 21);
-            this.cbGameSelector.TabIndex = 2;
-            this.cbGameSelector.SelectedIndexChanged += new System.EventHandler(this.cbGameSelector_SelectedIndexChanged);
+            this.lNumber.AutoSize = true;
+            this.lNumber.Font = new System.Drawing.Font("Consolas", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lNumber.Location = new System.Drawing.Point(162, 15);
+            this.lNumber.Name = "lNumber";
+            this.lNumber.Size = new System.Drawing.Size(100, 112);
+            this.lNumber.TabIndex = 1;
+            this.lNumber.Text = "0";
+            this.lNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lNumber.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
             // FormBingoController
             // 

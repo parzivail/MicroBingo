@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\sjcc.ico</ApplicationIcon>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -110,9 +110,10 @@
     <None Include="Resources\bingo_off.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\sjcc.png" />
+    <Content Include="icon.ico" />
+    <Content Include="Resources\icon.png" />
     <None Include="Resources\bingo_on.png" />
-    <Content Include="Resources\sjcc.ico" />
+    <Content Include="Resources\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
