@@ -20,7 +20,6 @@ namespace Bingo
         {
             _parent = parent;
             InitializeComponent();
-            Load += FormBingoBoard_Load;
             Closing += FormBingoBoard_Closing;
         }
 
@@ -37,11 +36,6 @@ namespace Bingo
                 IsClosing = true;
                 _parent.Close();
             }
-        }
-
-        private void FormBingoBoard_Load(object sender, EventArgs e)
-        {
-            BackColor = Color.FromArgb(12, 12, 12);
         }
 
         public Image UpdateBoard()

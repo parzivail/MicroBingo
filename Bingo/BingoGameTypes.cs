@@ -7,7 +7,7 @@ namespace Bingo
 {
     class BingoGameTypes
     {
-        public static IBingoGameType GameStandard = new GameTypeStandard("Standard");
+        public static IBingoGameType GameStandard = new GameTypeStandard("Regular");
         public static IBingoGameType GameFourCorners = new GameTypeFourCorners();
         public static IBingoGameType GameLittlePictureFrame = new GameTypeLittlePictureFrame();
         public static IBingoGameType GameX = new GameTypeX();

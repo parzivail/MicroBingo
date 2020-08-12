@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Bingo
 {
@@ -13,12 +15,14 @@ namespace Bingo
 
         public const int BoardNumberWidth = 120;
         public const int BoardNumberHeight = 110;
-        
+
         public List<int> Numbers { get; } = new List<int>();
         public List<int> NumbersShowing { get; } = new List<int>();
-        public Random Rng { get; } = new Random();
         public int CurrentNumber { get; set; } = -1;
         public IBingoGameType GameType;
+
+        private readonly byte[] _rngBuffer = new byte[4];
+        public RNGCryptoServiceProvider Rng { get; } = new RNGCryptoServiceProvider();
 
         public static string LetterForNumber(int num)
         {
@@ -58,7 +62,7 @@ namespace Bingo
             int num;
             while (true)
             {
-                num = Rng.Next(75) + 1;
+                num = RngNext(75) + 1;
 
                 if (Numbers.Contains(num))
                     continue;
@@ -73,6 +77,15 @@ namespace Bingo
             CurrentNumber = num;
 
             return num;
+        }
+
+        private int RngNext(int max)
+        {
+            Rng.GetBytes(_rngBuffer);
+            var randInt = BitConverter.ToUInt32(_rngBuffer, 0);
+
+            var scalar = randInt / (double)uint.MaxValue;
+            return (int)(scalar * max);
         }
 
         public void ResetBoard()

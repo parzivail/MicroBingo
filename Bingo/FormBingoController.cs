@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Reflection;
 using System.Windows.Forms;
 using Bingo.Properties;
 
@@ -12,8 +13,6 @@ namespace Bingo
 
         public bool IsClosing { get; set; }
         public BingoBoard BingoBoard { get; set; }
-
-        public const double Verison = 1.1;
 
         public static IBingoGameType[] GameTypes =
         {
@@ -34,7 +33,8 @@ namespace Bingo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Text = Resources.BingoController + " v" + Verison;
+            var ver = Assembly.GetExecutingAssembly().GetName().Version;
+            Text = Resources.BingoController + " v" + ver;
             lNumber.Text = Resources.Ready;
 
             BingoBoard = new BingoBoard();
@@ -127,7 +127,7 @@ namespace Bingo
 
         private void tutorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TryWebpage("https://github.com/parzivail/SjccBingo/blob/master/README.md#tutorial");
+            TryWebpage("https://github.com/parzivail/MicroBingo/blob/master/README.md#tutorial");
         }
 
         private void cbGameSelector_SelectedIndexChanged(object sender, EventArgs e)
