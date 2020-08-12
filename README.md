@@ -1,5 +1,5 @@
-# SjccBingo
-Bingo program for SJCC
+# MicroBingo
+Small, easy to use bingo program for parties, giveaways, country clubs, etc.
 
 # Tutorial
 On the main screen, you'll see 3 buttons, accompanied by a number indicator, numbers selected indicator, and a smaller view of the board.
