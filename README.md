@@ -44,24 +44,34 @@ The spaces used in each named game type are listed below.
 
 ## Regular Bingo
 
+Regular Bingo uses all 5 columns. The winning condition is typically 5 in a row horizontally, vertically, or diagonally:
+
 ![Regular Bingo](https://raw.githubusercontent.com/parzivail/MicroBingo/master/Resources/bingo_regular.png)
 
 ## Little Picture Frame
+
+The winning condition is below:
 
 ![Little Picture Frame](https://raw.githubusercontent.com/parzivail/MicroBingo/master/Resources/bingo_little_picture_frame.png)
 
 ## X
 
+X uses the same columns as Regular Bingo, but the name is provided to clarify the game type to the participants. The winning condition is below:
+
 ![Little Picture Frame](https://raw.githubusercontent.com/parzivail/MicroBingo/master/Resources/bingo_x.png)
 
 ## Four Corners
+
+The winning condition is below:
 
 ![Four Corners](https://raw.githubusercontent.com/parzivail/MicroBingo/master/Resources/bingo_four_corners.png)
 
 ## Blackout
 
-![Blackout](https://raw.githubusercontent.com/parzivail/MicroBingo/master/Resources/bingo_blackout.png)
+Blackout uses the same columns as Regular Bingo, but the name is provided to clarify the game type to the participants. The winning condition fills the entire board.
 
 ## Postage Stamp
+
+The winning condition is below:
 
 ![Postage Stamp](https://raw.githubusercontent.com/parzivail/MicroBingo/master/Resources/bingo_postage_stamp.png)
