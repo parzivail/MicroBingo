@@ -46,7 +46,7 @@ namespace Bingo
 
             foreach (var number in _parent.BingoBoard.NumbersShowing)
             {
-                var pos = _parent.BingoBoard.GetPositionForNumber(number);
+                var pos = BingoBoard.GetPositionForNumber(number);
 
                 boardOff.DrawImage(boardOn, new Rectangle(pos.X, pos.Y, BingoBoard.BoardNumberWidth - 10, BingoBoard.BoardNumberHeight), new Rectangle(pos.X, pos.Y, BingoBoard.BoardNumberWidth - 10, BingoBoard.BoardNumberHeight), GraphicsUnit.Pixel);
             }

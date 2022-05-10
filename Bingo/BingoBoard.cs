@@ -5,41 +5,40 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Bingo
 {
     public class BingoBoard
     {
-        private static readonly string[] _bingo = { "B", "I", "N", "G", "O" };
+        private static readonly string[] Bingo = { "B", "I", "N", "G", "O" };
+        
+        private readonly byte[] _rngBuffer = new byte[4];
 
         public const int BoardNumberWidth = 120;
         public const int BoardNumberHeight = 110;
-
-        public List<int> Numbers { get; } = new List<int>();
-        public List<int> NumbersShowing { get; } = new List<int>();
+        
+        public HashSet<int> Numbers { get; } = new HashSet<int>();
+        public HashSet<int> NumbersShowing { get; } = new HashSet<int>();
+        public RandomNumberGenerator Rng { get; } = RandomNumberGenerator.Create();
         public int CurrentNumber { get; set; } = -1;
         public IBingoGameType GameType;
 
-        private readonly byte[] _rngBuffer = new byte[4];
-        public RNGCryptoServiceProvider Rng { get; } = new RNGCryptoServiceProvider();
-
         public static string LetterForNumber(int num)
         {
-            return _bingo[GetRowForNumber(num)];
+            return Bingo[GetRowForNumber(num)];
         }
 
-        public static int GetRowForNumber(int num)
+        private static int GetRowForNumber(int num)
         {
             return (int)Math.Floor((num - 1) / 15f);
         }
 
-        public int GetColumnForNumber(int num)
+        private static int GetColumnForNumber(int num)
         {
             return (num - 1) % 15;
         }
 
-        public Point GetPositionForNumber(int num)
+        public static Point GetPositionForNumber(int num)
         {
             var col = GetColumnForNumber(num);
             var row = GetRowForNumber(num);
@@ -62,7 +61,9 @@ namespace Bingo
             int num;
             while (true)
             {
-                num = RngNext(75) + 1;
+                Rng.GetBytes(_rngBuffer);
+                var rngNum = BitConverter.ToInt32(_rngBuffer, 0);
+                num = (rngNum % 75) + 1;
 
                 if (Numbers.Contains(num))
                     continue;
@@ -77,15 +78,6 @@ namespace Bingo
             CurrentNumber = num;
 
             return num;
-        }
-
-        private int RngNext(int max)
-        {
-            Rng.GetBytes(_rngBuffer);
-            var randInt = BitConverter.ToUInt32(_rngBuffer, 0);
-
-            var scalar = randInt / (double)uint.MaxValue;
-            return (int)(scalar * max);
         }
 
         public void ResetBoard()
